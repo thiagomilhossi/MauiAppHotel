@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppHotel.Views.MainPage"
+             Title="Reservar"
+             BackgroundColor="#F3F6FA">
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+            
+            <Grid BackgroundColor="#102A43" Padding="28,30,28,30">
+                <VerticalStackLayout Spacing="7">
+                    <Label Text="APP HOTEL" TextColor="#E6B85C" FontSize="12" FontAttributes="Bold" CharacterSpacing="3" />
+                    <Label Text="Sua próxima estadia começa aqui." TextColor="White" FontSize="28" FontAttributes="Bold" />
+                    <Label Text="Escolha sua acomodação e consulte o valor da hospedagem." TextColor="#D7E3F0" FontSize="13" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <VerticalStackLayout Padding="20" Spacing="16">
+                
+                <Border BackgroundColor="White" Stroke="#E3EAF2" StrokeThickness="1" Padding="22" StrokeShape="RoundRectangle 20">
+                    <VerticalStackLayout Spacing="20">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Planeje sua hospedagem" FontSize="22" FontAttributes="Bold" TextColor="#102A43" />
+                            <Label Text="Preencha os campos abaixo para calcular sua estadia." FontSize="13" TextColor="#64748B" />
+                        </VerticalStackLayout>
+
+                        
+                        <VerticalStackLayout Spacing="12">
+                            <Label Text="Hóspedes" FontSize="15" FontAttributes="Bold" TextColor="#102A43" />
+                            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="14">
+                                <VerticalStackLayout Grid.Row="0" Grid.Column="0" Spacing="2" VerticalOptions="Center">
+                                    <Label Text="Adultos" FontSize="14" FontAttributes="Bold" TextColor="#243B53" />
+                                    <Label Text="A partir de 18 anos" FontSize="11" TextColor="#64748B" />
+                                </VerticalStackLayout>
+                                <Border Grid.Row="0" Grid.Column="1" Stroke="#D9E2EC" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="4" BackgroundColor="#F8FAFC">
+                                    <Grid ColumnDefinitions="42,44,42" ColumnSpacing="2" HeightRequest="42">
+                                        <Button Grid.Column="0" Text="−" Clicked="OnAdultosMenosClicked" BackgroundColor="#E8EEF5" TextColor="#243B53" FontSize="20" Padding="0" CornerRadius="9" WidthRequest="40" HeightRequest="40" />
+                                        <Label Grid.Column="1" Text="{Binding Adultos}" FontSize="16" FontAttributes="Bold" TextColor="#102A43" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                        <Button Grid.Column="2" Text="+" Clicked="OnAdultosMaisClicked" BackgroundColor="#2563EB" TextColor="White" FontSize="20" Padding="0" CornerRadius="9" WidthRequest="40" HeightRequest="40" />
+                                    </Grid>
+                                </Border>
+
+                                <VerticalStackLayout Grid.Row="1" Grid.Column="0" Spacing="2" VerticalOptions="Center">
+                                    <Label Text="Crianças" FontSize="14" FontAttributes="Bold" TextColor="#243B53" />
+                                    <Label Text="De 0 a 17 anos" FontSize="11" TextColor="#64748B" />
+                                </VerticalStackLayout>
+                                <Border Grid.Row="1" Grid.Column="1" Stroke="#D9E2EC" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="4" BackgroundColor="#F8FAFC">
+                                    <Grid ColumnDefinitions="42,44,42" ColumnSpacing="2" HeightRequest="42">
+                                        <Button Grid.Column="0" Text="−" Clicked="OnCriancasMenosClicked" BackgroundColor="#E8EEF5" TextColor="#243B53" FontSize="20" Padding="0" CornerRadius="9" WidthRequest="40" HeightRequest="40" />
+                                        <Label Grid.Column="1" Text="{Binding Criancas}" FontSize="16" FontAttributes="Bold" TextColor="#102A43" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                        <Button Grid.Column="2" Text="+" Clicked="OnCriancasMaisClicked" BackgroundColor="#2563EB" TextColor="White" FontSize="20" Padding="0" CornerRadius="9" WidthRequest="40" HeightRequest="40" />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <Label Text="Limite de 8 adultos e 8 crianças por reserva." FontSize="11" TextColor="#94A3B8" />
+                        </VerticalStackLayout>
+
+                        <BoxView HeightRequest="1" Color="#E9EEF5" />
+
+                        
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="Acomodação" FontSize="15" FontAttributes="Bold" TextColor="#102A43" />
+                            <Border Stroke="#D9E2EC" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="10,2" BackgroundColor="#F8FAFC">
+                                <Picker Title="Selecione uma acomodação"
+                                        ItemsSource="{Binding Suites}"
+                                        ItemDisplayBinding="{Binding Nome}"
+                                        SelectedItem="{Binding SuiteSelecionada, Mode=TwoWay}"
+                                        TextColor="#243B53"
+                                        TitleColor="#94A3B8"
+                                        BackgroundColor="Transparent" />
+                            </Border>
+                            <Label Text="{Binding DescricaoSuite}" FontSize="12" TextColor="#64748B" />
+                        </VerticalStackLayout>
+
+                        <BoxView HeightRequest="1" Color="#E9EEF5" />
+
+                        
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Período da estadia" FontSize="15" FontAttributes="Bold" TextColor="#102A43" />
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                <VerticalStackLayout Grid.Column="0" Spacing="6">
+                                    <Label Text="CHECK-IN" FontSize="10" CharacterSpacing="1" FontAttributes="Bold" TextColor="#64748B" />
+                                    <Border Stroke="#D9E2EC" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="8,4" BackgroundColor="#F8FAFC">
+                                        <DatePicker Date="{Binding CheckIn, Mode=TwoWay}"
+                                                    Format="dd/MM/yyyy"
+                                                    MinimumDate="{Binding DataMinimaCheckIn}"
+                                                    TextColor="#243B53"
+                                                    BackgroundColor="Transparent" />
+                                    </Border>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.Column="1" Spacing="6">
+                                    <Label Text="CHECK-OUT" FontSize="10" CharacterSpacing="1" FontAttributes="Bold" TextColor="#64748B" />
+                                    <Border Stroke="#D9E2EC" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="8,4" BackgroundColor="#F8FAFC">
+                                        <DatePicker Date="{Binding CheckOut, Mode=TwoWay}"
+                                                    Format="dd/MM/yyyy"
+                                                    MinimumDate="{Binding DataMinimaSaida}"
+                                                    TextColor="#243B53"
+                                                    BackgroundColor="Transparent" />
+                                    </Border>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                
+                <Border BackgroundColor="#EAF1FF" Stroke="#D5E3FF" StrokeThickness="1" Padding="22" StrokeShape="RoundRectangle 20">
+                    <VerticalStackLayout Spacing="13">
+                        <Label Text="RESUMO DA HOSPEDAGEM" FontSize="11" CharacterSpacing="1.5" FontAttributes="Bold" TextColor="#315B9C" />
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                            <Label Text="Hóspedes" TextColor="#53677F" FontSize="13" />
+                            <Label Grid.Column="1" Text="{Binding ResumoHospedes}" FontAttributes="Bold" TextColor="#243B53" FontSize="13" HorizontalTextAlignment="End" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                            <Label Text="Período" TextColor="#53677F" FontSize="13" />
+                            <Label Grid.Column="1" Text="{Binding ResumoPeriodo}" FontAttributes="Bold" TextColor="#243B53" FontSize="13" HorizontalTextAlignment="End" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                            <Label Text="Valor por diária" TextColor="#53677F" FontSize="13" />
+                            <Label Grid.Column="1" Text="{Binding ValorDiariaFormatado}" FontAttributes="Bold" TextColor="#243B53" FontSize="13" />
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#C9D9F5" />
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Total estimado" FontSize="16" FontAttributes="Bold" TextColor="#102A43" />
+                                <Label Text="Valor ilustrativo para fins acadêmicos" FontSize="10" TextColor="#64748B" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="1" Text="{Binding TotalFormatado}" FontSize="23" FontAttributes="Bold" TextColor="#1D4ED8" VerticalTextAlignment="Center" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+                <Button Text="Registrar reserva"
+                        Clicked="OnSalvarReservaClicked"
+                        BackgroundColor="#2563EB"
+                        TextColor="White"
+                        FontSize="15"
+                        HeightRequest="52"
+                        CornerRadius="14" />
+
+                <Label Text="{Binding MensagemOperacao}"
+                       FontSize="12"
+                       TextColor="#315B9C"
+                       HorizontalTextAlignment="Center" />
+
+                <Border BackgroundColor="White" Stroke="#E3EAF2" StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 18">
+                    <VerticalStackLayout Spacing="12">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Reservas registradas" FontSize="18" FontAttributes="Bold" TextColor="#102A43" />
+                            <Label Grid.Column="1" Text="{Binding ReservasExibidas.Count}"
+                                   FontSize="12" TextColor="#64748B" VerticalTextAlignment="Center" />
+                        </Grid>
+                        <Label Text="As reservas ficam disponíveis nesta execução do aplicativo."
+                               FontSize="11" TextColor="#64748B" />
+                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding ReservasExibidas}" Spacing="10">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BackgroundColor="#F8FAFC" Stroke="#E3EAF2" StrokeThickness="1" Padding="12" StrokeShape="RoundRectangle 12">
+                                        <VerticalStackLayout Spacing="4">
+                                            <Label Text="{Binding Identificacao}" FontSize="13" FontAttributes="Bold" TextColor="#102A43" />
+                                            <Label Text="{Binding Periodo}" FontSize="12" TextColor="#64748B" />
+                                            <Label Text="{Binding ValorTotalFormatado}" FontSize="14" FontAttributes="Bold" TextColor="#2563EB" />
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Text="Os valores e acomodações são demonstrativos." FontSize="11" TextColor="#64748B" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

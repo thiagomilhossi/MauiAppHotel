@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppHotel.Views.SobrePage"
+             Title="Sobre"
+             BackgroundColor="{StaticResource Background}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+            <Grid BackgroundColor="{StaticResource Navy}" Padding="24,42,24,38">
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Border BackgroundColor="#1F4262" Stroke="#45627F" StrokeThickness="1" Padding="18" StrokeShape="RoundRectangle 24">
+                        <Label Text="⌂" FontSize="48" TextColor="#E6B85C" HorizontalTextAlignment="Center"/>
+                    </Border>
+                    <Label Text="APP HOTEL" FontSize="27" FontAttributes="Bold" TextColor="White" CharacterSpacing="2"/>
+                    <Label Text="Conforto, praticidade e uma boa estadia." FontSize="13" TextColor="#D7E3F0" HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+            <VerticalStackLayout Padding="20" Spacing="16">
+                <Border BackgroundColor="White" Stroke="#E3EAF2" StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 18">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Sobre o aplicativo" FontSize="21" FontAttributes="Bold"/>
+                        <Label Text="O App Hotel é um aplicativo acadêmico de hospedagem desenvolvido com .NET MAUI e C#. O sistema permite informar hóspedes, escolher uma acomodação, selecionar o período da estadia e consultar o valor estimado." TextColor="#52657A" LineBreakMode="WordWrap"/>
+                        <BoxView HeightRequest="1" Color="#E9EEF5"/>
+                        <Label Text="Funcionalidades" FontAttributes="Bold"/>
+                        <Label Text="• Seleção da quantidade de adultos e crianças&#10;• Escolha de acomodação&#10;• Seleção das datas de check-in e check-out&#10;• Cálculo estimado do valor da hospedagem&#10;• Registro de reservas durante a execução do aplicativo&#10;• Validação das informações da hospedagem" TextColor="#52657A"/>
+                    </VerticalStackLayout>
+                </Border>
+                <Border BackgroundColor="White" Stroke="#E3EAF2" StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 18">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Informações do projeto" FontSize="18" FontAttributes="Bold"/>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Projeto" TextColor="{StaticResource Muted}"/>
+                            <Label Grid.Column="1" Text="App Hotel" FontAttributes="Bold"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Tecnologia" TextColor="{StaticResource Muted}"/>
+                            <Label Grid.Column="1" Text=".NET MAUI / C#" FontAttributes="Bold"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Interface" TextColor="{StaticResource Muted}"/>
+                            <Label Grid.Column="1" Text="XAML" FontAttributes="Bold"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Ano" TextColor="{StaticResource Muted}"/>
+                            <Label Grid.Column="1" Text="2026" FontAttributes="Bold"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#E9EEF5"/>
+                        <Label Text="Desenvolvedor(a)" FontAttributes="Bold"/>
+                        <Label Text=" Thiago Pereira Milhossi" TextColor="#2563EB" FontAttributes="Bold"/>
+                        <Label Text="Curso Técnico em Desenvolvimento de Sistemas" FontSize="12" TextColor="{StaticResource Muted}"/>
+                    </VerticalStackLayout>
+                </Border>
+                <Label Text="Projeto desenvolvido como atividade prática das Agendas 13 e 14 – Programação Mobile I." FontSize="11" TextColor="{StaticResource Muted}" HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

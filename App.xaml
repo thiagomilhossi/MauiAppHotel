@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppHotel.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Navy">#102A43</Color>
+            <Color x:Key="Blue">#2563EB</Color>
+            <Color x:Key="Gold">#E6B85C</Color>
+            <Color x:Key="Background">#F4F7FB</Color>
+            <Color x:Key="Muted">#64748B</Color>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Navy}" />
+                </Style>
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Padding" Value="16,12" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
